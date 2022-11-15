@@ -1636,7 +1636,7 @@ JNINativeMethod memcopy_methods_15[] = {
 };
 
 JNINativeMethod anonk_methods[] = {
-    {CC"defineAnonymousClass", CC"("DAC_Args")"CLS,      FN_PTR(Unsafe_DefineAnonymousClass)},
+    {CC "defineAnonymousClass", CC"("DAC_Args")"CLS,      FN_PTR(Unsafe_DefineAnonymousClass)},
 };
 
 JNINativeMethod lform_methods[] = {
