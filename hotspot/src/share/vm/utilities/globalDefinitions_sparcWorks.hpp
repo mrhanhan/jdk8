@@ -81,9 +81,9 @@
 #ifdef SOLARIS
 #ifndef PRIdPTR
 #if defined(_LP64)
-#define PRIdPTR                 "ld"
-#define PRIuPTR                 "lu"
-#define PRIxPTR                 "lx"
+#define PRIdPTR                 " ld"
+#define PRIuPTR                 " lu"
+#define PRIxPTR                 " lx"
 #else
 #define PRIdPTR                 "d"
 #define PRIuPTR                 "u"

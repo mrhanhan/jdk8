@@ -110,10 +110,10 @@ sa_stuff:
 # Note that the user must specify the desired parallelism level via a
 # command-line or environment variable name HOTSPOT_BUILD_JOBS.
 $(adjust-mflags): $(GAMMADIR)/make/$(Platform_os_family)/makefiles/adjust-mflags.sh
-	@+rm -f $@ $@+
-	@+cat $< > $@+
-	@+chmod +x $@+
-	@+mv $@+ $@
+	# @+rm -f $@ $@+
+	# @+cat $< > $@+
+	# @+chmod +x $@+
+	# @+mv $@+ $@
 
 the_vm: vm_build_preliminaries $(adjust-mflags)
 	@$(UpdatePCH)

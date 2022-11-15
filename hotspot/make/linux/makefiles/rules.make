@@ -146,9 +146,9 @@ include $(GAMMADIR)/make/altsrc.make
 # The non-PIC object files are only generated for 32 bit platforms.
 ifdef LP64
 %.o: %.cpp
-	@echo Compiling $<
+	@echo Compiling $< 
 	$(QUIETLY) $(REMOVE_TARGET)
-	$(QUIETLY) $(COMPILE.CXX) $(DEPFLAGS) -o $@ $< $(COMPILE_DONE)
+	$(QUIETLY) $(COMPILE.CXX) $(DEPFLAGS)  -o $@ $< $(COMPILE_DONE)
 else
 %.o: %.cpp
 	@echo Compiling $<

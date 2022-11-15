@@ -133,13 +133,15 @@ endif
 
 # position-independent code
 PICFLAG = -fPIC
+# 
+CFLAGS += -fpermissive -std=c++03
 
 VM_PICFLAG/LIBJVM = $(PICFLAG)
 VM_PICFLAG/AOUT   =
 VM_PICFLAG        = $(VM_PICFLAG/$(LINK_INTO))
 
 ifeq ($(JVM_VARIANT_ZERO), true)
-CFLAGS += $(LIBFFI_CFLAGS)
+CFLAGS += $(LIBFFI_CFLAGS)z
 endif
 ifeq ($(JVM_VARIANT_ZEROSHARK), true)
 CFLAGS += $(LIBFFI_CFLAGS)
@@ -204,7 +206,8 @@ else
 endif
 
 # Compiler warnings are treated as errors
-WARNINGS_ARE_ERRORS = -Werror
+WARNINGS_ARE_ERRORS = -Wno-error=literal-suffix -Wno-error=narrowing -Wno-error=deprecated-declarations -fpermissive -Wno-error=reorder
+WARNINGS_ARE_ERRORS += -Wno-error=conversion -Wno-error=float-conversion -Wno-error=sign-conversion -Wno-error=extra
 
 ifeq ($(USE_CLANG), true)
   # However we need to clean the code up before we can unrestrictedly enable this option with Clang
@@ -214,7 +217,7 @@ ifeq ($(USE_CLANG), true)
   WARNINGS_ARE_ERRORS += -Wno-return-type -Wno-empty-body
 endif
 
-WARNING_FLAGS = -Wpointer-arith -Wsign-compare -Wundef -Wunused-function -Wunused-value
+# WARNING_FLAGS = -Wpointer-arith -Wsign-compare -Wundef -Wunused-function -Wunused-value
 
 ifeq ($(USE_CLANG),)
   # Since GCC 4.3, -Wconversion has changed its meanings to warn these implicit
@@ -274,6 +277,7 @@ ifeq ($(USE_CLANG),)
     DEPFLAGS += -fpch-deps
   endif
 endif
+
 
 #------------------------------------------------------------------------
 # Linker flags
